@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostels List</title>
+</head>
+<body>
+    <h1>Hostel List</h1>
+    <ul>
+        {% for hotel in hotels %}
+            <li>{{ hotel.name }} - Location: {{ hotel.location }} - Rooms: {{ hotel.number_of_rooms }}</li>
+        {% empty %}
+            <li>No hostels available at the moment.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

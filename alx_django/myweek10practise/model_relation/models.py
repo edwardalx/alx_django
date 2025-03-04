@@ -15,25 +15,25 @@ FOREIGN KEY(employees) REFERENCES User(id)
 #     department = models.CharField(max_length=100, null=True)
 #     employees = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class Employees(models.Model):
+class Employee(models.Model):
     name = models.CharField(max_length=250, null= False)
 
 class Department(models.Model):
     name = models.CharField(max_length=255, null = True)
-    employee = models.ForeignKey(Employees, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
-class Products(models.Model):
+class Product(models.Model):
     product_name = models.CharField(max_length=255, null = False, unique=True)
 class ProductDetail(models.Model):
-    product = models.OneToOneField(Products, on_delete=models.CASCADE)
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
     detailed_discription = models.CharField(max_length=255)
 
-class Students(models.Model):
+class Student(models.Model):
     name = models.CharField(max_length=255, null=False)
     course = models.CharField(max_length=255, null=False)
 
-class Courses(models.Model):
+class Course(models.Model):
     course_title = models.CharField(max_length=255, null=False)
-    sudents = models.ManyToManyField(Students, on_delete=models.CASCADE)
+    students = models.ManyToManyField(Student, related_name='courses')
 
 

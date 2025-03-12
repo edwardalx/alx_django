@@ -8,6 +8,12 @@ class PlayerSerializer(serializers.ModelSerializer):
         fields = ['player', 'balance']
 
 class CustomerSerializer(serializers.ModelSerializer):
+    full_name = serializers.SerializerMethodField()
     class Meta:
         model = Customer
-        fields = '__all__'
+        fields = ['phoneNumber','first_name', 'last_name','password','full_name']
+    def get_full_name(self,obj):
+        return  obj.first_name +" "+ obj.last_name
+    
+    
+    
